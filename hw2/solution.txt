@@ -1,0 +1,13 @@
+##Name: Chakrya Ros
+##Name: Muntaha Pasha
+
+Step 1:
+What are the things needed for Bootstrap to be loaded?
+make the styleSheet<link> in the head <head> before all other stylesheets to load css.
+
+Step2:
+How does Bootstrap’s Grid system work? 
+
+Bootstrap Grid system is the responsive system to let use create the 12 columns for a row across the page. The column will adjust depending on the screen size. Bootstrap Grid system have four classes: xs for phone, sm for tables, md for small laptop and lg for laptops and desktops.
+
+The basic structure of a bootstrap gird, we need to create the layout we want, create a container<div class="container">. Next create row<div class="row">. and add the desired number of columns(.col-*-* classes)

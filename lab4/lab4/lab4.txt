@@ -1,0 +1,71 @@
+
+# Chakrya Ros (github's account: chakryaros)
+# Parter's name of github account: vitr2218
+
+1. create github
+2. create a public git repository
+3. git clone https://github.com/chakryaros/Recitation-3308.git
+
+4. git add README.md
+    git commit -m
+
+5. git add Sample1.txt
+   git add Sample2.txt
+   git commit -m "add two file"
+   git push origin master
+
+6. git tag -a v0.0.1
+
+7. git push origin v0.0.1
+
+8. git branch new-feature
+   git checkout new-feature
+9.  git add Sample3.txt
+    git add Sample4.txt
+    git commit -m "add two file"
+    git push origin new-feature
+
+10. git checkout master
+11. git add Sample1.txt
+    git commit -m "change sample1.txt"
+    git push origin master
+
+12. git merge new-feature
+
+13. git checkout new-feature
+14. git push origin master
+
+17 . git clone https://github.com/vitr2218/Recitation-3308.git
+18.  git add README.md
+19.  git commit -m "add my name"
+20.  git push origin master
+21.  cd to Recitation-3308
+22.  git checkout master
+23.  git add README.md     //edit file
+24.  git commit -m "change file"
+
+
+25. I invited my partner to add her name into my README.md file but she didn't try to attempt to do that. so I just edit README.md file and git commit -m and pust to mashter branch. I did't get any conflict.
+30. git push origin master
+
+commit e75e409b856924bc158e6180f28b7f2508707197
+Merge: a952112 603cc36
+Author: chakrya ros <chakryaros@cu-engr2-2-1-10.201.65.47.int.colorado.edu>
+Date:   Thu Sep 27 15:23:06 2018 -0600
+
+    merge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

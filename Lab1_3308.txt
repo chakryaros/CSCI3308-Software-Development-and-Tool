@@ -1,0 +1,37 @@
+Name: Chakrya Ros, Sofia Lange
+
+1. mkdir cs3308
+2. mv cs3308 CSCI3308_204
+3. mv Lab\ Materials CSCI3308_204
+4. cd Lab\ Materials
+   yes there is hidden file
+   ls -a use to find the hidden file
+5. cd images and ls -lS
+   fightingRalphie.png is the biggest one
+6. mkdir tinyData  
+   mv images/majecticRalphie.png tinyData
+   cd textFiles 
+   ls -lS and cp textFiles/aliceinwonderland.txt tinyData 
+   du -h tinyData (the size of tinyDate is 276k)
+7. zip -r tinyData.zip tinyData (the size of tinyDate.zip is 172k)
+8. tar czf tinyData.tar tinyData (the size of tinyData.tar is 172k)
+9. rm -r tinyData
+10. tar xvf tinyData.tar
+11. The different is that little2.zip has little diectory and two files, little1.zip contains only two file
+12. find . -name "target.txt"
+    Its path from the lab1 is ./emptyFlolders/13/target.txt
+    Its full path on machine is /Users/chakryaros/Dropbox/csci33/CSCI3308_204/Lab Materials/emptyFolders/13
+
+ 13. head -5 dracula.txt > MyShortStory
+     tail -5 heartofdarkness.txt >> MyShortStory
+
+
+  PART 5.
+1. sort password_demo.txt
+2. sort -t: -k 4 password_demo.txt
+3. grep -i "system" password_demo.txt
+4. wc -w password_demo.txt (Word count = 70)
+5. cat password_demo.txt | uniq 
+6. cat password_demo.txt | uniq > tmp
+7. echo "wc -l" -l password_demo.txt > getUniqueGID.sh -> ./getUniqueGID.sh (output says "41 password_demo.txt")
+

@@ -1,0 +1,6 @@
+#Name: Chakrya Ros -- Partner Muntaha Pasha
+
+1. Link for travis : 
+    https://travis-ci.com/chakryaros/CU-CSCI3308-CIPractice/builds/93087389
+
+2. Link for github : https://github.com/chakryaros/CU-CSCI3308-CIPractice

@@ -1,0 +1,221 @@
+//Chakrya Ros -- Muntaha Pasha//
+
+1. select firstname,lastname from employees where country != 'USA' and hireDate <= '2013-11-07' order by firstname,lastname;
+firstname | lastname  
+-----------+-----------
+ Anne      | Dodsworth
+ Michael   | Suyama
+ Robert    | King
+ Steven    | Buchanan
+(4 rows)
+
+2. select productid, productname, unitsinstock, unitprice FROM products WHERE unitsinstock > 0 and unitsinstock < reorderlevel;
+productid |        productname        | unitsinstock | unitprice 
+-----------+---------------------------+--------------+-----------
+         2 | Chang                     |           17 |     19.00
+         3 | Aniseed Syrup             |           13 |     10.00
+        11 | Queso Cabrales            |           22 |     21.00
+        21 | Sir Rodney's Scones       |            3 |     10.00
+        30 | Nord-Ost Matjeshering     |           10 |     25.89
+        32 | Mascarpone Fabioli        |            9 |     32.00
+        37 | Gravad lax                |           11 |     26.00
+        43 | Ipoh Coffee               |           17 |     46.00
+        45 | Rogede sild               |            5 |      9.50
+        48 | Chocolade                 |           15 |     12.75
+        49 | Maxilaku                  |           10 |     20.00
+        56 | Gnocchi di nonna Alice    |           21 |     38.00
+        64 | Wimmers gute Semmelknödel |           22 |     33.25
+        66 | Louisiana Hot Spiced Okra |            4 |     17.00
+        68 | Scottish Longbreads       |            6 |     12.50
+        70 | Outback Lager             |           15 |     15.00
+        74 | Longlife Tofu             |            4 |     10.00
+(17 rows)
+
+3. select productname, unitprice from products where unitprice in (select Max(unitprice) from products) or unitprice in (select MIN(unitprice) from products) ORDER BY unitprice DESC;
+  productname  | unitprice 
+---------------+-----------
+ Côte de Blaye |    263.50
+ Geitost       |      2.50
+(2 rows)
+
+4. select productid, productname, (unitsinstock*unitprice) AS "Total Inventory Value" FROM products WHERE (unitsinstock* unitprice) > 1000 ORDER BY (unitsinstock*unitprice) DESC;
+productid | productname | Total Inventory Value
+-----------+----------------------------------+-----------------------
+38 | Côte de Blaye                   | 4479.50
+59 | Raclette Courdavault            | 4345.00
+12 | Queso Manchego La Pastora       | 3268.00
+20 | Sir Rodney's Marmalade          | 3240.00
+61 | Sirop d'érable                  | 3220.50
+6  | Grandma's Boysenberry Spread    | 3000.00
+9  | Mishi Kobe Niku                 | 2813.00
+55 | Pâté chinois                    | 2760.00
+18 | Carnarvon Tigers                | 2625.00
+40 | Boston Crab Meat                | 2263.20
+22 | Gustaf's Knäckebröd             | 2184.00
+27 | Schoggi Schokolade              | 2151.10
+36 | Inlagd Sill                     | 2128.00
+65 | Louisiana Fiery Hot Pepper Sauce| 1599.80
+34 | Sasquatch Ale                   | 1554.00
+73 | Röd Kaviar                      | 1515.00
+39 | Chartreuse verte                | 1242.00
+28 | Rössle Sauerkraut               | 1185.60
+4  | Chef Anton's Cajun Seasoning    | 1166.00
+46 | Spegesild                       | 1140.00
+25 | NuNuCa Nuß-Nougat-Creme         | 1064.00
+51 | Manjimup Dried Apples           | 1060.00
+50 | Valkoinen suklaa                | 1056.25
+63 | Vegie-spread                    | 1053.60
+76 | Lakkalikööri                    | 1026.00
+(25 rows)
+
+5. select shipcountry, count(orderid) from orders where shipcountry !='Germany' and shippeddate >='2013-10-01' and shippeddate <= '2013-10-31' group by shipcountry order by shipcountry desc;
+ shipcountry | count 
+-------------+-------
+ Venezuela   |     1
+ USA         |     7
+ UK          |     3
+ Sweden      |     1
+ Spain       |     1
+ Portugal    |     2
+ Mexico      |     2
+ Ireland     |     2
+ France      |     2
+ Finland     |     2
+ Canada      |     1
+ Belgium     |     1
+(12 rows)
+
+6. SELECT Customers.CustomerID, Customers.CompanyName FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID GROUP BY Customers.CustomerID HAVING COUNT(*) >= 10;
+customerid | companyname
+------------+------------------------------
+OLDWO | Old World Delicatessen
+WARTH | Wartian Herkku
+MAGAA | Magazzini Alimentari Riuniti
+QUEEN | Queen Cozinha
+RATTC | Rattlesnake Canyon Grocery
+FRANK | Frankenversand
+TORTU | Tortuga Restaurante
+ISLAT | Island Trading
+LEHMS | Lehmanns Marktstand
+VICTE | Victuailles en stock
+RICAR | Ricardo Adocicados
+LINOD | LINO-Delicateses
+QUICK | QUICK-Stop
+HUNGO | Hungry Owl All-Night Grocers
+AROUT | Around the Horn
+KOENE | Koniglich Essen
+MEREP | Mere Paillarde
+GODOS | Godos Cocina Tipica
+HANAR | Hanari Carnes
+FOLKO | Folk och fa HB
+BERGS | Berglunds snabbkop
+SAVEA | Save-a-lot Markets
+BLONP | Blondel pere et fils
+VAFFE | Vaffeljernet
+HILAA | HILARIoN-Abastos
+PICCO | Piccolo und mehr
+ERNSH | Ernst Handel
+SUPRD | Suprêmes delices
+REGGC | Reggiani Caseifici
+GREAL | Great Lakes Food Market
+WANDK | Die Wandernde Kuh
+LILAS | LILA-Supermercado
+WHITC | White Clover Markets
+RICSU | Richter Supermarkt
+BOTTM | Bottom-Dollar Markets
+(35 rows)
+
+7. select supplierid, sum(unitprice*unitsinstock) as valueofinventory from products group by supplierid having count(*)>=5;
+ supplierid | valueofinventory 
+------------+------------------
+         12 |          3301.85
+          7 |          4409.65
+(2 rows)
+
+8. select suppliers.companyname,products.productname,products.unitprice from suppliers join products on suppliers.supplierid=products.supplierid where country='USA' or country='Germany' order by products.unitprice desc;
+companyname | productname | unitprice
+------------------------------------------+----------------------------------+-----------
+Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Thüringer Rostbratwurst         | 123.79
+Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Rössle Sauerkraut               | 45.60
+Heli SÃŒÃ\u009Fwaren GmbH & Co. KG       | Schoggi Schokolade              | 43.90
+Grandma Kelly's Homestead                | Northwoods Cranberry Sauce      | 40.00
+Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Wimmers gute Semmelknödel       | 33.25
+Heli SÃŒÃ\u009Fwaren GmbH & Co. KG       | Gumbär Gummibärchen             | 31.23
+Grandma Kelly's Homestead                | Uncle Bob's Organic Dried Pears | 30.00
+Nord-Ost-Fisch Handelsgesellschaft mbH   | Nord-Ost Matjeshering           | 25.89
+Grandma Kelly's Homestead                | Grandma's Boysenberry Spread    | 25.00
+New Orleans Cajun Delights               | Chef Anton's Cajun Seasoning    | 22.00
+New Orleans Cajun Delights               | Chef Anton's Gumbo Mix          | 21.35
+New Orleans Cajun Delights               | Louisiana Fiery Hot Pepper Sauce| 21.05
+New England Seafood Cannery              | Boston Crab Meat                | 18.40
+Bigfoot Breweries                        | Steeleye Stout                  | 18.00
+New Orleans Cajun Delights               | Louisiana Hot Spiced Okra       | 17.00
+Heli SÃŒÃ\u009Fwaren GmbH & Co. KG       | NuNuCa Nuß-Nougat-Creme         | 14.00
+Bigfoot Breweries                        | Sasquatch Ale                   | 14.00
+Bigfoot Breweries                        | Laughing Lumberjack Lager       | 14.00
+Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Original Frankfurter grüne Soße | 13.00
+New England Seafood Cannery              | Jack's New England Clam Chowder | 9.65
+Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Rhönbräu Klosterbier            | 7.75
+(21 rows)
+
+9. select e.lastname, e.firstname, e.title, e.extension, count(O.employeeid) from employees e join orders O on O.employeeid=e.employeeid group by e.employeeid having count(O.employeeid)>50 order by e.lastname desc, e.firstname, e.title, e.extension;
+ lastname  | firstname |          title           | extension | count 
+-----------+-----------+--------------------------+-----------+-------
+ Suyama    | Michael   | Sales Representative     | 428       |    67
+ Peacock   | Margaret  | Sales Representative     | 5176      |   156
+ Leverling | Janet     | Sales Representative     | 3355      |   127
+ King      | Robert    | Sales Representative     | 465       |    72
+ Fuller    | Andrew    | Vice President of Sales  | 3457      |    96
+ Davolio   | Nancy     | Sales Representative     | 5467      |   123
+ Callahan  | Laura     | Inside Sales Coordinator | 2344      |   104
+(7 rows)
+
+10. select customers.customerid,customers.companyname from customers left join orders on customers.customerid=orders.customerid where orders.customerid is null;
+ customerid |             companyname              
+------------+--------------------------------------
+ FISSA      | FISSA Fabrica Inter. Salchichas S.A.
+ PARIS      | Paris specialites
+(2 rows)
+
+11. select S.CompanyName, S.ContactName, C.CategoryName, C.Description, P.ProductName, P.UnitsOnOrder FROM Products P JOIN Suppliers S ON S.SupplierID = P.SupplierID JOIN Categories C ON C.CategoryID = P.CategoryID WHERE P.UnitsInStock = 0;
+               companyname                |   contactname   |  categoryname  |                        description                         |       productname       | unitsonorder 
+------------------------------------------+-----------------+----------------+------------------------------------------------------------+-------------------------+--------------
+ New Orleans Cajun Delights               | Shelley Burke   | Condiments     | Sweet and savory sauces, relishes, spreads, and seasonings | Chef Anton's Gumbo Mix  |            0
+ Formaggi Fortini s.r.l.                  | Elio Rossi      | Dairy Products | Cheeses                                                    | Gorgonzola Telino       |           70
+ G'day Mate                               | Wendy Mackenzie | Meat/Poultry   | Prepared meats                                             | Perth Pasties           |            0
+ Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Martin Bein     | Meat/Poultry   | Prepared meats                                             | Thüringer Rostbratwurst |            0
+ Pavlova Ltd.                             | Ian Devling     | Meat/Poultry   | Prepared meats                                             | Alice Mutton            |            0
+(5 rows)
+
+12. select products.productname,suppliers.companyname,suppliers.country,products.unitsinstock from products join suppliers on products.supplierid=suppliers.supplierid where quantityperunit like '%bottles%' or quantityperunit like '%bags%';
+           productname            |               companyname                |  country  | unitsinstock 
+----------------------------------+------------------------------------------+-----------+--------------
+ Aniseed Syrup                    | Exotic Liquids                           | UK        |           13
+ Chang                            | Exotic Liquids                           | UK        |           17
+ Chai                             | Exotic Liquids                           | UK        |           39
+ Louisiana Fiery Hot Pepper Sauce | New Orleans Cajun Delights               | USA       |           76
+ Genen Shouyu                     | Mayumi's                                 | Japan     |           39
+ Outback Lager                    | Pavlova Ltd.                             | Australia |           15
+ Gumbär Gummibärchen              | Heli SÃŒÃ\u009Fwaren GmbH & Co. KG       | Germany   |           15
+ Rhönbräu Klosterbier             | Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Germany   |          125
+ Wimmers gute Semmelknödel        | Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Germany   |           22
+ Thüringer Rostbratwurst          | Plutzer LebensmittelgroÃ\u009FmÃ€rkte AG | Germany   |            0
+ Laughing Lumberjack Lager        | Bigfoot Breweries                        | USA       |           52
+ Steeleye Stout                   | Bigfoot Breweries                        | USA       |           20
+ Sasquatch Ale                    | Bigfoot Breweries                        | USA       |          111
+ Côte de Blaye                    | Aux joyeux ecclÃ©siastiques              | France    |           17
+ Gula Malacca                     | Leka Trading                             | Singapore |           27
+ Sirop d'érable                   | ForÃªts dÃ©rables                        | Canada    |          113
+(16 rows)
+
+13. CREATE TABLE Top_Items ( ItemID INT NOT NULL, ItemCode INT NOT NULL, ItemName VARCHAR(40) NOT NULL, InventoryDate DATE NOT NULL, SupplierID INT NOT NULL, ItemQuantity INT NOT NULL, ItemPrice DECIMAL(9 , 2 ) NOT NULL, PRIMARY KEY (ItemID));
+
+14. INSERT into Top_Items(ItemID, ItemCode, ItemName, InventoryDate, ItemQuantity,ItemPrice, SupplierID) select ProductID, CategoryID, ProductName, current_date, UnitsInStock, UnitPrice, SupplierID from Products where Products.UnitsInStock*Products.UnitPrice > 1500;
+
+15. DELETE FROM Top_Items USING Suppliers WHERE Top_Items.SupplierID=Suppliers.SupplierID AND  Suppliers.country = 'USA' OR Suppliers.country = 'Canada';
+
+16. ALTER TABLE TOP_Items ADD InventoryValue decimal(9,2);
+
+17. UPDATE Top_Items SET InventoryValue = ItemPrice*ItemQuantity;
+
+18. DROP TABLE Top_Items;

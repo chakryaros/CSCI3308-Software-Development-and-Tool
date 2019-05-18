@@ -1,0 +1,3 @@
+100	Thomas	Manager		Sales	5000
+200	Jason	Developer	Technology	7000
+300	Sanjya	Sysadmin	Techonogy	5900	

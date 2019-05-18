@@ -1,0 +1,114 @@
+Part1
+
+step1:
+
+Use diff to display all the lines that have changed from scene1_v1.txt to get to
+scene2_v2.txt.
+
+A. diff scene1_v1.txt scene1_v2.txt
+
+
+For the original diff output, what do the ‘>’ or ‘<’ character mean at the beginning of
+each line?
+
+B. > are line from the scene1_v1.txt 
+
+ < are line from the scene1_v2.txt t
+
+Try using the –c option, what does that do?
+
+C. diff -c, output NUM (default 3) lines of copied context 
+
+step2
+
+ Use grep to display each line that contains the word “pigeon”, as well as its line
+number, in scene1_v1.txt
+
+
+A. grep 'pigeon' scene1_v1.txt -n
+
+
+Use grep to display the lines that were modified in scene1_v1.txt?
+
+B. diff scene1_v1.txt scene1_v2.txt | grep '<'sc
+
+//diff scene1_v1.txt scene1_v2.txt | grep '>'
+
+step3
+
+Using the delimiter ‘:’, display the name of the characters who are speaking in
+scene1_v1.txt (make sure to ignore any lines that do not include the delimiter).
+
+A. cut -s -d: -f1 scene1_v1.txt
+
+Now use cut to only display the name of the characters that have had their lines altered from scene1_v1.txt to scene1_v2.txt.
+
+B. diff scene1_v1.txt scene1_v2.txt | cut -d ':' -f 1 scene1_v1.txt -s
+
+step4
+
+Use the uniq command to list only the duplicate lines in scene1_v1.txt.
+
+A. uniq -d scene1_v1.txt
+
+Use uniq to show how many times each character has had their lines altered from scene1_v1.txt to scene1_v2.txt.
+
+B. diff scene1_v1.txt scene1_v2.txt | grep '<' | cut -d ':' -f 1 -s | sort | uniq 
+
+step5
+
+1) Remove all the letters
+
+A. 1. sed 's/[a-z]//g' cryptic.txt
+  
+Replace all numbers with an ‘_’
+
+ 2. sed 's/[0-9]/_/g' cryptic.txt
+
+Using pipes, create a script that pipes together multiple sed commands to replace each number with its matching character. How can this be done without piping? LEET Alphabet Used:
+a – 4 e – 3 i – 1 o – 0 (oh – zero)
+s–5 t–7
+
+B. sed 's/4/a/g' cryptic.txt | sed 's/3/e/g' cryptic.txt | sed 's/1/i/g' cryptic.txt | sed 's/0/o/g' cryptic.txt | sed  's/5/s/g' cryptic.txt | sed  's/7/t/g' cryptic.txt
+
+step6
+
+How many phone numbers are in the dataset?
+
+A. egrep '^[0-9]{3}-[0-9]{3}-[0-9]{4}$' regex_practice_data.txt -c
+
+grep -c '[0-9]\{3\}\-[0-9]\{3\}\-[0-9]\{4\}' regex_practice_data.txt
+
+
+  phone numbers are 767
+
+How many city of Boulder phone numbers (e.g. starting with 303-441-...)
+
+B. grep -c "303-441" regex_practice_data.txt
+
+  51 Boulder Phone Numbers
+
+Step7:
+
+Using pizzaOrders.txt, print out the average cost per pizza for each order.
+
+A. awk 'NR>1 {print $6/$2}' pizzaOrders.txt
+
+	5.6
+	5
+	5.35714
+	5.34091
+
+Using pizzaOrders.txt, calculate and print the percent of all pizzas sold that were
+cheese.
+B. awk 'NR>1 {total +=$2;cost+=$5} END{print cost/total}' pizzaOrders.txt 
+
+ 	0.375 answer
+
+
+
+
+
+
+
+

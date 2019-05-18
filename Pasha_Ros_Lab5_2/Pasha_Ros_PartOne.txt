@@ -1,0 +1,26 @@
+Muntaha Pasha
+Chakrya Ros
+
+PART ONE: 
+
+1. background-color: purple
+#div1{
+    background-color:purple}
+
+2. Changing the margin shifts the boxes over, and changing the padding changed the box sizes. 
+
+3. #div p{background-color: yellow;}, if you make the padding and margin greater than your box, then it moves the value out and the background color for p disappears and the value in p is moved out. 
+
+4. Scroll puts it in the front and hidden puts it behind.
+
+5. Puts them next to eachother in order, 1, 2, 3. Right puts them in order of 3, 2, 1, aligned on the right side. 
+
+6. Aligns them 1, 2, 3 along the left side. With just clear: right it moves the one next to it on the right down.
+
+7. #div1{float: left;}
+#div2{float:left;}
+#div3{clear:left;}
+
+8. Changes nothing, the default margin is 0px.
+
+

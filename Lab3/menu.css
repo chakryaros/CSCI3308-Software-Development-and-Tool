@@ -1,0 +1,52 @@
+#main {
+	border: 5px solid blue;
+	width: 20%;
+	float: left;
+	position: fixed;
+}
+#info{
+	border: 5px solid blue;
+	width: 70%;
+	float: right;
+	background-color: #4285F4;
+}
+#div1{
+	border: 2px solid red;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+#div2{
+	border: 2px solid red;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+#div3{
+	border: 2px solid red;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+#div4{
+	border: 2px solid red;
+	padding:10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+#div5{
+	
+}
+#div6{
+	
+}
+#div7{
+	
+}
+#div8{
+
+}
