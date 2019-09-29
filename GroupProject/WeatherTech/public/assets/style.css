@@ -1,0 +1,516 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--background: rgba(240,240,240);
+}
+/*
+body {
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"content content content"
+		"footer footer footer";
+	grid-template-rows: 70px 1fr 60px;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    height: 100vh;
+    margin: 0;
+}
+
+#pageHeader {
+	grid-area: header;
+}
+*/
+
+body {
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: scroll;
+}
+/*navigation  and header styles*/
+header {
+	background: var(--background);
+	text-align: right;
+	position: relative;
+	z-index: 999;
+	width: 100%;
+	top: 0;
+}
+
+header img {
+	width: 200px;
+	margin-right: 2em;
+}
+
+.nav-toggle {
+	display: none;
+}
+
+.nav-toggle-label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 1em;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.nav-toggle-label span {
+	font-size: 22px;
+    color: black;
+    font-weight: bold;
+}
+
+.nav-toggle-label span:hover {
+	color: #ce191f;
+	cursor: pointer;
+}
+
+nav {
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	left: 0;
+	background: var(--background);
+	width: 100%;
+	transform: scale(1,0);
+	transform-origin: top;
+	transition: transform 400ms ease-in-out;
+	z-index: 999;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li {
+	margin-bottom: 1em;
+	margin-left: 5em;
+}
+
+nav a {
+	text-decoration: none;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color: black;
+	opacity: 0;
+	transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+	color: #ce191f;
+
+}
+
+.nav-toggle:checked ~ nav {
+	transform: scale(1,1);
+
+}
+
+.nav-toggle:checked ~ nav a {
+	opacity: 1;
+	transition: opacity 250ms ease-in-out 250ms;
+}
+
+/*styling for screens larger than 800px*/
+@media screen and (min-width: 800px) {
+	.nav-toggle-label {
+		display: none;
+	}
+
+	header {
+		display: grid;
+		grid-template-columns: 1fr auto minmax(600px,3fr) 1fr;
+		grid-template-rows: 74px 40px;
+	}
+
+	.main-logo {
+		grid-column: 2 / 3
+	}
+
+	nav {
+		all: unset;
+		grid-column: 3 / 4;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	nav a {
+		opacity: 1;
+		position: relative
+	}
+
+	nav ul {
+		display: flex;
+	}
+
+	nav li {
+		margin-left: 3em;
+		margin-bottom: 0;
+	}
+
+	nav a::before {
+		content: '';
+		display: block;
+		height: 3px;
+		background: #ce191f;
+		position: absolute;
+		top: -.75em;
+		left: 0;
+		right: 0;
+		transform: scale(0,1);
+		transition: transform ease-in-out 250ms;
+	}
+
+	nav a:hover::before {
+		transform: scale(1,1);
+	}
+
+	nav a:hover {
+		color: gray;
+	}
+
+}
+
+/*styling for welcome banner*/
+.welcome-banner {
+	height: 0px;
+	width: 100%;
+}
+
+.welcome-banner-container {
+	height: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background: black;
+    color: white;
+}
+ .welcome-message {
+ 	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+  .welcome-message span {
+  	display: none;
+  }
+
+.li-su-btn-container {
+	grid-column: 4;
+    display: block;
+    height: 40px;
+    width: fit-content;
+    padding-top: 10px;
+}
+
+.li-su-btn-container .login {
+	height: 40px;
+    width: 120px;
+    float: left;
+}
+
+.li-su-btn-container .signup {
+	height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    float: right;
+}
+
+.li-su-btn-container .header-item {
+	display: flex;
+    width: fit-content;
+    background: none;
+    border-style: none;
+    text-decoration: none;
+    color: gold;
+    height: 40px;
+    justify-content: center;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.li-su-btn-container .header-item:hover {
+	color: #ce191f;
+	cursor: pointer;
+
+}
+
+/*reformating for larger screens*/
+@media screen and (min-width: 800px) {
+	.welcome-banner {
+		grid-row: 2;
+		grid-column: 1/5;
+	}
+
+	.welcome-message span {
+		display: block;
+		margin-left: 4px;
+	}
+}
+
+
+
+/*Styling for index page*/
+
+
+
+.index-main {
+	display: grid;
+	grid-template-rows: auto auto;
+	height: 400px;
+	grid-gap: 10px;
+	padding: 10px;
+	margin-top: 40px;
+}
+
+.food-labels {
+	display: none;
+}
+
+@media screen and (min-width: 800px) {
+
+	.food-labels {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		height: 60px;
+		padding: 10px 10px 0px 10px;
+	}
+
+	.food-labels a  {
+		font-size: 30px;
+		text-decoration: none;
+		color: black;
+		width: 230px;
+	}
+
+	.food-labels a:hover {
+		color: #ce191f;
+		cursor: pointer;
+	}
+
+	.index-main {
+		all: unset;
+		display: grid;
+		grid-template-columns: auto auto;
+		height: 400px;
+		grid-gap: 10px;
+		padding: 0px 10px 10px 10px;
+
+	}
+}
+
+
+.index-main .food-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto;
+	height: 100%;
+	grid-gap: 10px;
+	padding: 10px;
+}
+
+.index-main .food-container .food-item {
+	box-shadow: 0px 0px 3px;
+}
+
+.item-name {
+	color: rgba(255,255,255,.8);
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+	filter: brightness(200%);
+	width: 50px;
+}
+
+.index-main .food-container #sandwich1 {
+	background: url(images/sandwich1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #sandwich2 {
+	background: url(images/sandwich2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #sandwich3 {
+	background: url(images/sandwich3.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #sandwich4 {
+	background: url(images/sandwich4.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #sandwich5 {
+	background: url(images/sandwich5.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #sandwich6 {
+	background: url(images/sandwich6.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza1 {
+	background: url(images/pizza1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza2 {
+	background: url(images/pizza2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza3 {
+	background: url(images/pizza3.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza4 {
+	background: url(images/pizza4.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza5 {
+	background: url(images/pizza5.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.index-main .food-container #pizza6 {
+	background: url(images/pizza6.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+
+/*styling for footer menu*/
+
+footer {
+	display: grid;
+	grid-template-rows: 125px 87px 119px;
+	height: 341px;
+	background-color: rgba(240,240,240);
+	padding: 10px;
+}
+
+.footer-menu {
+	text-align: center;
+	display: block;
+	border-bottom: 1px solid gray;
+}
+
+.footer-menu ul {
+	list-style: none;
+	text-decoration: none;
+	margin-left: -40px;
+}
+
+.footer-menu span {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.footer-menu ul a {
+	text-decoration: none;
+	color: black;
+	font-size: 12px;
+	color: gray;
+}
+
+.footer-menu ul a:hover {
+	cursor: pointer;
+	color: #ce191f;
+	text-decoration: underline;
+}
+
+@media screen and (min-width: 800px) {
+	footer {
+		all: unset;
+		display: grid;
+		grid-template-columns: 33% 33% 33%;
+		height: 200px;
+		background-color: rgba(240,240,240);
+		padding: 10px;
+	}
+}
+
+/*styling for order button*/
+
+.order-button-container {
+	    display: block;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+
+}
+
+
+.order-button-container .order-button {
+	    width: fit-content;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ce191f;
+    padding: 8px 5px 0px 5px;
+}
+
+
+.order-button-container .order-button a {
+	color: black;
+	font-weight: bold;
+}
+
+.order-button-container .order-button a:hover {
+	cursor: pointer;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

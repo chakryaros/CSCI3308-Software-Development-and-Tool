@@ -1,0 +1,50 @@
+<%- include ../header.ejs %>
+
+
+
+<div id="signup-modal">
+
+   <div id="image"></div>
+
+  <form id="modal-content" action="/store/signup" method="post">
+    <div id="signup-container">
+      <img id="weathertechimage" src="../../public/assets/images/weathertech_logo.JPG" alt="WeatherTech Cafe">
+      <h2>CREATE ACCOUNT</h2>
+
+      <h4>Acount Information</h4>
+
+      <% if (messages.error) { %>
+          <p style="color:red"><%- messages.error %></p>
+      <% } %>
+
+      <% if (messages.success) { %>
+          <p style="color:green"><%- messages.success %></p>
+      <% } %>
+
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="email"><b>Identikey</b></label>
+      <input type="text" placeholder="Enter Identikey" name="UserId" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="Password" required>
+
+      <label for="psw-repeat"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Confirm Password" name="psw-repeat" required>
+
+
+      <h4>Your Information</h4>
+      <label for="name"><b>Full Name</b></label>
+      <input type="text" placeholder="John Smith" name="Name" required>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div id="clearfix">
+        
+        <button type="submit" id="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

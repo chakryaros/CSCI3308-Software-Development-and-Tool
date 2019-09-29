@@ -1,0 +1,36 @@
+
+<%- include ../header.ejs %>
+
+
+
+<div id="signup-modal">
+
+   <div id="image"></div>
+
+  <form id="modal-content" action="/store/orders" method="post">
+    <div id="signup-container">
+      <img id="weathertechimage" src="../../public/assets/images/weathertech_logo.JPG" alt="WeatherTech Cafe">
+      <h2>PLACE ORDER</h2>
+
+      <% if (messages.error) { %>
+          <p style="color:red"><%- messages.error %></p>
+      <% } %>
+
+      <% if (messages.success) { %>
+          <p style="color:green"><%- messages.success %></p>
+      <% } %>
+
+      <p>Please fill in this form to place an order.</p>
+      <hr>
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Identikey" name="UserId" required>
+
+      <label for="food"><b>Enter Food Name</b></label>
+      <input type="text" placeholder="Pepperoni Pizza" name="FoodName" required>
+
+      <div id="clearfix">
+        
+        <button type="submit" id="signupbtn">Place Order</button>
+      </div>
+    </div>
+  </form>

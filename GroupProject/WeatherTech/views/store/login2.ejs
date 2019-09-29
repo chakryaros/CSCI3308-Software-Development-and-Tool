@@ -1,0 +1,59 @@
+<%- include ../header.ejs %>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="../../public/assets/login_style.css">
+
+	<script src="../js/signup-modal.js"></script>
+
+	<title>WeatherTech Cafe</title>
+
+</head>
+<body>
+	<div class="container">
+		<img id="weathertechimage" src="../../public/assets/images/weathertech_logo.JPG" alt="WeatherTech Cafe">
+
+		<center><h3> Get your food on the go!</h3></center>
+
+		<% if (messages.error) { %>
+		    <p style="color:red"><%- messages.error %></p>
+		<% } %>
+		<% if (messages.success) { %>
+		    <p style="color:blue"><%- messages.success %></p>
+		<% } %>
+		
+		<div class="form_container">
+			<form id="modal-content" action="login2" method="post">
+				<div class="form-group">
+					<input type="text" placeholder="Enter Identikey" name="UserId" required>
+				</div>
+
+				<div class="form-group">
+					<input type="password" placeholder="Enter Password" name="Password" required>
+				</div>
+
+				<div class="submit">
+					<center><input id="submit_button" type="submit" name="Login" value="Login"></center>
+				</div>
+			</form>
+		</div>
+
+		<div class="createaccount">
+			<center><p style="font-size: 12px"> Don't have an Account? </p></center>
+			<center><a id="createaccount" href="signup">Create an Account Now</a></center>
+		</div>
+	</div>
+	<div class="image"></div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
